@@ -18,4 +18,4 @@ Q.2 - Make a mobile version of the as shown below. The scope will be different h
 2. Run npm install to install the Node.js dependencies. (Only Jquery Used.)
 3. Run the Xaamp controller and go to http://localhost/wingify-assignment/ on your browser.
 
-Once Reviewed Please share the Feedback Markup :simple_smile:
+Once Reviewed Please share your Feedback on my Personal Mail ID :smile:
