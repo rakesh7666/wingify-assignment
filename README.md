@@ -1,4 +1,4 @@
-# wingify-assignment
+# Wingify Assignment
 
 Q1. For Desktop, Create an Exit-intent popup with the following design.
 
