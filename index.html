@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Wingify</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="stylesheet/style.css" />
+</head>
+
+<body>
+    <div class="popup-wrapper">
+        <div class="signup-popup">
+            <a class="close"></a>
+            <form id="newsletterForm" method="POST">
+                <h3><strong>Get &#36; 10 Off when you sign up for</strong> savings, news, updates and more</h3>
+                <input type="text" name="name" placeholder="your name" class="form-control" />
+                <input type="email" name="email" placeholder="email address" class="form-control" required />
+                <div class="checkbox-wrap">
+                    <input class="styled-checkbox" id="newsletter" type="checkbox" value="value1">
+                    <label for="newsletter">Check this box to recieve monthly newsletter</label>
+                </div>
+                <input type="submit" id="btnSubmit" class="btn btn-dark" value="Sign Up" disabled />
+                <a class="link" href="#">Privacy Policy</a>
+            </form>
+            <div class="img-wrap">
+                <img src="images/sale.png" alt="50% Sale">
+            </div>
+        </div>
+    </div>
+    <div class="backdrop"></div>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var windowWidth = $(this).width();
+            if (windowWidth < 768) {
+                setTimeout(() => {
+                    showPopup();
+                }, 5000);
+            }
+            $(document).mouseout(function (e) {
+                if (
+                    e.clientY < 50 &&
+                    e.relatedTarget == null &&
+                    windowWidth > 768
+                ) {
+                    showPopup();
+                }
+            });
+            $('.close').click(function () {
+                document.cookie = "isFormSubmitted=false;max-age=" + 30 * 24 * 60 * 60;
+                console.log(document.cookie)
+                closePopup();
+
+            });
+
+
+            $('#newsletter').change(function () {
+                if (this.checked) {
+                    $('#btnSubmit').attr("disabled", false);
+                } else {
+                    $('#btnSubmit').attr("disabled", true);
+                }
+            });
+
+            $("#newsletterForm").submit(function (event) {
+                document.cookie = "isFormSubmitted=true;max-age=" + 30 * 24 * 60 * 60;
+                event.preventDefault();
+                closePopup();
+
+            });
+
+            showPopup = () => {
+                let cookieValue = getCookie("isFormSubmitted");
+                console.log(cookieValue);
+                if (cookieValue == null) {
+                    $('.popup-wrapper').addClass('active');
+                    $('.backdrop').css('display', 'block');
+                }
+
+            }
+            closePopup = () => {
+                $('.popup-wrapper').removeClass('active');
+                $('.backdrop').css('display', 'none');
+            }
+
+        });
+
+        function getCookie(name) {
+            // Split cookie string and get all individual name=value pairs in an array
+            var cookieArr = document.cookie.split(";");
+
+            // Loop through the array elements
+
+            const val = cookieArr.map(x => {
+                let value = x.split("=");
+                return name == value[0] ? value[1] : null;
+            })
+            return val[0];
+            // for (var i = 0; i < cookieArr.length; i++) {
+            //     var cookiePair = cookieArr[i].split("=");
+
+            //     /* Removing whitespace at the beginning of the cookie name
+            //     and compare it with the given string */
+            //     if (name == cookiePair[0].trim()) {
+            //         // Decode the cookie value and return
+            //         return decodeURIComponent(cookiePair[1]);
+            //     }
+            // }
+
+            // // Return null if not found
+            // return null;
+        }
+
+    </script>
+</body>
+
+</html>
