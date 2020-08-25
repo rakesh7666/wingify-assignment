@@ -46,20 +46,6 @@ a {
                 border: 1px solid $border-color;
             }
         }
-
-        // &:hover {
-        //     & + label:before {
-        //         background-color: $primary;
-        //     }
-        // }
-
-        // // Box focus
-        // &:focus {
-        //     + label:before {
-        //         box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.12);
-        //     }
-        // }
-
         // Box checked
         &:checked {
             + label {
@@ -94,6 +80,8 @@ a {
         }
     }
 }
+
+// Popup
 .popup-wrapper {
     position: fixed;
     top: 0;
@@ -178,6 +166,8 @@ a {
     }
 }
 
+// Backdrop
+
 .backdrop {
     background-color: rgba($black, 0.5);
     position: fixed;
@@ -190,6 +180,8 @@ a {
     display: none;
 }
 
+// Button Stlying
+
 .btn {
     padding: 1.5rem 1.5rem;
     display: block;
@@ -201,7 +193,7 @@ a {
     font-size: 1.2rem;
     width: 100%;
     cursor: pointer;
-    &:disabled{
+    &:disabled {
         opacity: 0.7;
         cursor: not-allowed;
     }
@@ -211,6 +203,7 @@ a {
     }
 }
 
+// Close Icon
 .close {
     position: absolute;
     right: 1rem;
